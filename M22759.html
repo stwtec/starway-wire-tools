@@ -80,6 +80,7 @@ button:hover{background:var(--accent)}
 <div class="result-row"><strong>導體材料（Conductor）</strong><span id="out-conductor"></span></div>
 <div class="result-row"><strong>導體直徑（Conductor diameter）</strong><span id="out-conductorDiameter"></span></div>
 <div class="result-row"><strong>絕緣外徑（Insulation diameter）</strong><span id="out-insulationDiameter"></span></div>
+<div class="result-row" id="nominalOdRow" style="display:none"><strong>名目外徑（TE SPEC 55 Nominal OD）</strong><span id="out-nominalOd"></span></div>
 <div class="result-row"><strong>顏色（Color）</strong><span id="out-colors"></span></div>
 <div class="result-row"><strong>顏色標準（Color standard）</strong><span id="out-colorStandard"></span></div>
 <div class="result-row"><strong>識別標示（Identification）</strong><span id="out-identification"></span></div>
@@ -112,7 +113,7 @@ button:hover{background:var(--accent)}
 </details>
 </section>
 <h2>資料說明</h2>
-<div class="note">本資料庫各項參數均嚴格依據 Amphenol CIT 技術規格書建檔。尺寸為英吋與毫米，重量為 lb/1000 ft 與 kg/1000 m，電阻為 Ω/1000 ft 與 Ω/km。</div>
+<div class="note">本資料庫原有資料依 Amphenol CIT 技術規格書建檔；新增 /32～/46 交叉對照資料依 TE Connectivity SPEC 55 PDF 建檔。尺寸為英吋與毫米，重量為 lb/1000 ft 與 kg/1000 m，電阻為 Ω/1000 ft 與 Ω/km。</div>
 <div class="hashtags" aria-label="Hashtags">
 <span>#M22759</span><span>#MILW22759</span><span>#MILDTL22759</span><span>#SAEAS22759</span><span>#AerospaceWire</span><span>#HookupWire</span><span>#WireSpecification</span><span>#WireHarness</span><span>#CableAssembly</span><span>#PTFEInsulation</span><span>#ETFEInsulation</span><span>#StrandedConductor</span><span>#航空電線</span><span>#線束加工</span><span>#星維科技</span>
 </div>
@@ -189,6 +190,70 @@ const wireDescriptionsZh={
   "91":"MIL-DTL-22759/91 與 /92 線材為輕量、高性能航太用電線，採用 PTFE／聚醯亞胺／PTFE 膠帶雙層絕緣，外覆 PTFE 膠帶。適用於需要優異熱穩定性與輕量化的航太及其他應用。",
   "92":"MIL-DTL-22759/91 與 /92 線材為輕量、高性能航太用電線，採用 PTFE／聚醯亞胺／PTFE 膠帶雙層絕緣，外覆 PTFE 膠帶。適用於需要優異熱穩定性與輕量化的航太及其他應用。"
 };
+/* TE Connectivity SPEC 55 cross-reference additions for M22759 /32 through /46.
+   Values are copied from the supplied PDF.  Where the PDF gives an AWG range in
+   the Part Numbering System but no detailed physical row, the lookup deliberately
+   reports PDF 未提供 instead of estimating a value. */
+const teSpec55LightRows={
+  "30":{"awg":"30","stranding":"7/0.102","nominalOD":{"in":"0.024","mm":"0.61"},"weight":{"in":"0.66","mm":"0.98"}},
+  "28":{"awg":"28","stranding":"7/127","nominalOD":{"in":"0.027","mm":"0.68"},"weight":{"in":"0.91","mm":"1.35"}},
+  "26":{"awg":"26","stranding":"19/102","nominalOD":{"in":"0.032","mm":"0.81"},"weight":{"in":"1.4","mm":"2.08"}},
+  "24":{"awg":"24","stranding":"19/127","nominalOD":{"in":"0.037","mm":"0.94"},"weight":{"in":"2.0","mm":"2.98"}},
+  "22":{"awg":"22","stranding":"19/0.16","nominalOD":{"in":"0.043","mm":"1.09"},"weight":{"in":"2.8","mm":"4.17"}},
+  "20":{"awg":"20","stranding":"19/0.203","nominalOD":{"in":"0.050","mm":"1.27"},"weight":{"in":"4.3","mm":"6.40"}},
+  "18":{"awg":"18","stranding":"19/0.25","nominalOD":{"in":"0.060","mm":"1.52"},"weight":{"in":"6.5","mm":"9.67"}},
+  "16":{"awg":"16","stranding":"19/287","nominalOD":{"in":"0.068","mm":"1.73"},"weight":{"in":"8.3","mm":"12.35"}},
+  "14":{"awg":"14","stranding":"19/0.36","nominalOD":{"in":"0.085","mm":"2.20"},"weight":{"in":"13.0","mm":"19.34"}},
+  "12":{"awg":"12","stranding":"37/0.32","nominalOD":{"in":"0.103","mm":"2.62"},"weight":{"in":"19.7","mm":"29.32"}},
+  "10":{"awg":"10","stranding":"37/0.403","nominalOD":{"in":"0.128","mm":"3.25"},"weight":{"in":"31.8","mm":"47.32"}},
+  "8":{"awg":"8","stranding":"133/0.287","nominalOD":{"in":"0.188","mm":"4.77"},"weight":{"in":"58.8","mm":"87.50"}}
+};
+const teSpec55AirframeRows={
+  "26":{"awg":"26","stranding":"19/102","nominalOD":{"in":"0.040","mm":"1.01"},"weight":{"in":"1.7","mm":"2.5"}},
+  "24":{"awg":"24","stranding":"19/127","nominalOD":{"in":"0.045","mm":"1.14"},"weight":{"in":"2.3","mm":"3.4"}},
+  "22":{"awg":"22","stranding":"19/0.16","nominalOD":{"in":"0.050","mm":"1.27"},"weight":{"in":"3.2","mm":"4.8"}},
+  "20":{"awg":"20","stranding":"19/0.203","nominalOD":{"in":"0.058","mm":"1.47"},"weight":{"in":"4.7","mm":"7.0"}},
+  "18":{"awg":"18","stranding":"19/0.25","nominalOD":{"in":"0.070","mm":"1.78"},"weight":{"in":"7.2","mm":"10.7"}},
+  "16":{"awg":"16","stranding":"19/287","nominalOD":{"in":"0.077","mm":"1.96"},"weight":{"in":"9.0","mm":"13.4"}},
+  "14":{"awg":"14","stranding":"19/0.36","nominalOD":{"in":"0.094","mm":"2.40"},"weight":{"in":"13.8","mm":"20.5"}},
+  "12":{"awg":"12","stranding":"37/0.32","nominalOD":{"in":"0.111","mm":"2.82"},"weight":{"in":"20.5","mm":"30.5"}},
+  "10":{"awg":"10","stranding":"37/0.403","nominalOD":{"in":"0.134","mm":"3.40"},"weight":{"in":"32.4","mm":"48.3"}}
+};
+function teSpec55Rows(source,allowed){
+  const rows={};
+  allowed.forEach(function(code){rows[code]=source[code] ? Object.assign({},source[code]) : {awg:code==="00" ? "2/0" : code,sourceOnly:true};});
+  return rows;
+}
+function teSpec55Record(slant,part,conductor,temp,source,allowed,construction){
+  return {
+    standard:"M22759/"+slant+"（SAE AS22759/"+slant+"）",
+    insulation:"Radiation crosslinked, modified ETFE",
+    conductor:conductor,
+    temp:temp,
+    voltage:"600 V",
+    colorStandard:"MIL-STD-681",
+    identification:"TE SPEC 55 / "+part,
+    notes:"TE SPEC 55 交叉對照資料；"+construction+"。詳細表提供名目外徑與重量，未提供導體直徑、絕緣直徑與最大電阻。",
+    rows:teSpec55Rows(source,allowed)
+  };
+}
+const teSpec55Additional={
+  "32":teSpec55Record("32","55A0111","Tin-plated copper","-65 to 150°C",teSpec55LightRows,["30","28","26","24","22","20","18","16","14","12"],"600 V 輕量單層線材"),
+  "44":teSpec55Record("44","55A0112","Silver-plated copper","-65 to 200°C",teSpec55LightRows,["28","26","24","22","20","18","16","14","12"],"600 V 輕量單層線材"),
+  "45":teSpec55Record("45","55A0113","Nickel-plated copper","-65 to 200°C",teSpec55LightRows,["28","26","24","22","20","18","16","14","12"],"600 V 輕量單層線材"),
+  "33":teSpec55Record("33","55A0114","Silver-plated high-strength alloy","-65 to 200°C",teSpec55LightRows,["30","28","26","24","22","20"],"600 V 輕量單層線材"),
+  "46":teSpec55Record("46","55A0116","Nickel-plated high-strength alloy","-65 to 200°C",teSpec55LightRows,["28","26","24","22","20"],"600 V 輕量單層線材"),
+  "34":teSpec55Record("34","55A0811","Tin-plated copper","-65 to 150°C",teSpec55AirframeRows,["00","0","2","4","6","8","10","12","14","16","18","20","22","24"],"600 V 雙層 Airframe 線材"),
+  "43":teSpec55Record("43","55A0812","Silver-plated copper","-65 to 200°C",teSpec55AirframeRows,["00","0","2","4","6","8","10","12","14","16","18","20","22","24","26"],"600 V 雙層 Airframe 線材"),
+  "41":teSpec55Record("41","55A0813","Nickel-plated copper","-65 to 200°C",teSpec55AirframeRows,["00","0","2","4","6","8","10","12","14","16","18","20","22","24","26"],"600 V 雙層 Airframe 線材"),
+  "35":teSpec55Record("35","55A0814","Silver-plated high-strength alloy","-65 to 200°C",teSpec55AirframeRows,["26","24","22","20"],"600 V 雙層 Airframe 線材"),
+  "42":teSpec55Record("42","55A0816","Nickel-plated high-strength alloy","-65 to 200°C",teSpec55AirframeRows,["26","24","22","20"],"600 V 雙層 Airframe 線材")
+};
+Object.assign(wireDatabase,teSpec55Additional);
+const teLightDescription="TE SPEC 55 的 600 V 輕量單層線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759。";
+const teAirframeDescription="TE SPEC 55 的 600 V 雙層 Airframe 線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759。";
+Object.assign(wireDescriptions,{"32":teLightDescription,"33":teLightDescription,"44":teLightDescription,"45":teLightDescription,"46":teLightDescription,"34":teAirframeDescription,"35":teAirframeDescription,"41":teAirframeDescription,"42":teAirframeDescription,"43":teAirframeDescription});
+Object.assign(wireDescriptionsZh,{"32":"TE SPEC 55 的 600 V 輕量單層線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/32。","33":"TE SPEC 55 的 600 V 輕量單層線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/33。","44":"TE SPEC 55 的 600 V 輕量單層線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/44。","45":"TE SPEC 55 的 600 V 輕量單層線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/45。","46":"TE SPEC 55 的 600 V 輕量單層線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/46。","34":"TE SPEC 55 的 600 V 雙層 Airframe 線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/34。","35":"TE SPEC 55 的 600 V 雙層 Airframe 線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/35。","41":"TE SPEC 55 的 600 V 雙層 Airframe 線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/41。","42":"TE SPEC 55 的 600 V 雙層 Airframe 線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/42。","43":"TE SPEC 55 的 600 V 雙層 Airframe 線材，採輻射交聯改質 ETFE 絕緣；本頁依 TE PDF 交叉對照至 M22759/43。"});
 const colorCode={"0":"黑色","1":"棕色","2":"紅色","3":"橙色","4":"黃色","5":"綠色","6":"藍色","7":"紫色","8":"灰色","9":"白色"};
 const awgDisplay={"04":"4/0","03":"3/0","02":"2/0","01":"0"};
 const awgAliases={"4/0":"04","3/0":"03","2/0":"02","0":"01"};
@@ -197,6 +262,7 @@ function normalizeSlant(value){return value.trim().replace(/^\//,"");}
 function normalizeAwg(value,sheet){
   const raw=value.trim().replace(/\s+/g,"");
   if(sheet && sheet.rows[raw]) return raw;
+  if(raw==="2/0" && sheet && sheet.rows["00"]) return "00";
   return awgAliases[raw] && sheet && sheet.rows[awgAliases[raw]] ? awgAliases[raw] : raw;
 }
 function displayAwg(code,row){return awgDisplay[code] || row.awg || code;}
@@ -204,9 +270,14 @@ function pairText(pair,unitA,unitB){return pair ? pair.in+" "+unitA+" ("+pair.mm
 function formatTemperature(value){return String(value || "—").replace(/\s+to\s+/g," 至 ");}
 function formatDiameter(row){
   if(row.conductorDiameter) return pairText(row.conductorDiameter,"in","mm");
-  return pairText(row.conductorMin,"in","mm")+" 至 "+pairText(row.conductorMax,"in","mm");
+  if(row.conductorMin && row.conductorMax) return pairText(row.conductorMin,"in","mm")+" 至 "+pairText(row.conductorMax,"in","mm");
+  return "PDF 未提供";
 }
-function formatInsulationDiameter(row){return pairText(row.insulationMin,"in","mm")+" 至 "+pairText(row.insulationMax,"in","mm");}
+function formatInsulationDiameter(row){
+  if(row.insulationMin && row.insulationMax) return pairText(row.insulationMin,"in","mm")+" 至 "+pairText(row.insulationMax,"in","mm");
+  return "PDF 未提供";
+}
+function formatNominalOD(row){return row.nominalOD ? row.nominalOD.mm+" mm（"+row.nominalOD.in+" in）" : "PDF 未提供";}
 function formatColor(code,slant){
   if(slant==="83" || slant==="84" || slant==="85"){
     if(code==="5D") return "5D－深綠色（優先色）";
@@ -272,7 +343,11 @@ function getInsulation(slant,code,meta){
 function validColor(slant,code){return (slant==="83" || slant==="84" || slant==="85") ? (code==="5D" || code==="9") : /^[0-9]{1,4}$/.test(code);}
 function updateAwgHint(){
   const slant=normalizeSlant(document.getElementById("inp-slant").value),meta=wireDatabase[slant],hint=document.getElementById("awgHint");
-  if(!meta){hint.textContent="例如輸入 6、20、7；可查詢 Slant Sheet：5-12、16-23、28-31、80-92。";return;}
+  if(!meta){
+    const availableSlants=Object.keys(wireDatabase).sort(function(a,b){return Number(a)-Number(b);});
+    hint.textContent="例如輸入 6、20、7；可查詢 Slant Sheet："+availableSlants.map(function(value){return "/"+value;}).join("、")+"。";
+    return;
+  }
   hint.textContent="此線規適用 AWG："+Object.keys(meta.rows).map(function(k){return displayAwg(k,meta.rows[k]);}).join(", ")+"。";
 }
 function updateWireDescription(){
@@ -282,8 +357,9 @@ function updateWireDescription(){
 }
 function formatStranding(value){
   const raw=String(value || ""),parts=raw.split("/");
-  if(parts.length!==2) return raw || "—";
-  return raw+" — "+parts[0]+" 股導體，每股為 "+parts[1]+" AWG（PDF 記法："+parts[0]+" 股／每股 "+parts[1]+" AWG）";
+  if(!raw) return "PDF 未提供";
+  if(parts.length!==2) return raw;
+  return raw+" — "+parts[0]+" 股導體；每股絞線尺寸 "+parts[1]+"（PDF Stranding (mm) 原文）";
 }
 function setText(id,value){document.getElementById(id).textContent=value || "—";}
 function parseWire(){
@@ -303,16 +379,20 @@ function parseWire(){
   setText("out-conductor",translateSpecText(getConductor(slant,code,meta)));
   setText("out-conductorDiameter",formatDiameter(row));
   setText("out-insulationDiameter",formatInsulationDiameter(row));
+  const nominalRow=document.getElementById("nominalOdRow");
+  if(row.nominalOD){nominalRow.style.display="block";setText("out-nominalOd",formatNominalOD(row));}
+  else{nominalRow.style.display="none";setText("out-nominalOd","");}
   setText("out-colors",formatColor(color,slant));
   setText("out-colorStandard",meta.colorStandard);
   setText("out-identification",translateSpecText(meta.identification));
   setText("out-voltage",meta.voltage);
   setText("out-temp",formatTemperature(meta.temp));
-  setText("out-weight",pairText(row.weight,"lb/1000 ft","kg/1000 m"));
-  setText("out-resistance",pairText(row.resistance,"Ω/1000 ft","Ω/km")+" 最大值");
+  setText("out-weight",row.weight ? pairText(row.weight,"lb/1000 ft","kg/1000 m") : "PDF 未提供");
+  setText("out-resistance",row.resistance ? pairText(row.resistance,"Ω/1000 ft","Ω/km")+" 最大值" : "PDF 未提供");
   if(row.breakStrength){document.getElementById("breakRow").style.display="block";setText("out-breakStrength",pairText(row.breakStrength,"lb","kg")+" 最小值");}else document.getElementById("breakRow").style.display="none";
   setText("out-thermax",row.thermax || "PDF未提供");
-  setText("out-notes",translateSpecText(meta.notes || "—"));
+  const sourceNote=row.sourceOnly ? "TE PDF 的 Part Numbering System 列為可用 AWG，但詳細尺寸表未提供此 AWG 的絞線、名目外徑與重量。" : "";
+  setText("out-notes",[translateSpecText(meta.notes || "—"),sourceNote].filter(Boolean).join(" "));
   result.style.display="block";
 }
 function showError(msg){const error=document.getElementById("errorMsg");error.textContent=msg;error.style.display="block";}
