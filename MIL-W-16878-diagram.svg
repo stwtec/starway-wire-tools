@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">MIL-W-16878 part number diagram</title>
+  <desc id="desc">Example M16878/5 B C B 903. B identifies coated copper, C is 28 AWG, B means seven strands, and 903 is white insulation with black and orange stripes.</desc>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#143a60}.heading{font-size:21px;font-weight:700}.label{font-size:17px;font-weight:700}.detail{font-size:15px}.code{font-size:29px;font-weight:700}.box{fill:#eef5fb;stroke:#7aa9ce;stroke-width:2}.wire{stroke:#6295bf;stroke-width:2;fill:none}.accent{fill:#0055a5}
+  </style>
+  <rect width="960" height="320" fill="#fff"/>
+  <rect width="960" height="48" fill="#003366"/>
+  <text x="26" y="31" fill="white" class="heading" style="fill:white">MIL-W-16878 part numbering</text>
+  <text x="68" y="104" class="code">M16878/5</text>
+  <rect class="box" x="260" y="67" width="62" height="50" rx="6"/><text x="279" y="101" class="code">B</text>
+  <rect class="box" x="347" y="67" width="62" height="50" rx="6"/><text x="365" y="101" class="code">C</text>
+  <rect class="box" x="434" y="67" width="62" height="50" rx="6"/><text x="452" y="101" class="code">B</text>
+  <rect class="box" x="521" y="67" width="109" height="50" rx="6"/><text x="541" y="101" class="code">903</text>
+  <path class="wire" d="M186 121v39H108v18M291 121v57M378 121v57M465 121v57M575 121v57"/>
+  <text x="28" y="207" class="label">Slant sheet</text><text x="28" y="232" class="detail">/5 · Type EE · PTFE</text><text x="28" y="253" class="detail">1,000 V · .015 in wall</text>
+  <text x="228" y="207" class="label">Material</text><text x="228" y="232" class="detail">B · Coated copper</text>
+  <text x="365" y="207" class="label">Size</text><text x="365" y="232" class="detail">C · 28 AWG</text>
+  <text x="457" y="207" class="label">Stranding</text><text x="457" y="232" class="detail">B · 7 strands</text>
+  <text x="667" y="207" class="label">Color</text><text x="667" y="232" class="detail">9 White</text><text x="667" y="253" class="detail">0 Black · 3 Orange</text>
+  <path d="M26 284H934" stroke="#c9d6e1"/>
+  <text x="27" y="305" class="detail">Source: Thermax MIL-W-16878 wire, catalog p. 26 · Example follows the supplied part-number diagram.</text>
+</svg>
