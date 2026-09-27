@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">MIL-W-16878 wire specification lookup</title>
+  <desc id="desc">Technical illustration of insulated wire with a copper conductor, PTFE or FEP insulation, and voltage ratings from 250 to 1000 volts.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#062445"/><stop offset="1" stop-color="#07558b"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe4a7"/><stop offset=".52" stop-color="#c98738"/><stop offset="1" stop-color="#a25e20"/></linearGradient>
+    <linearGradient id="jacket" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8f7ff"/><stop offset=".48" stop-color="#85c7e4"/><stop offset="1" stop-color="#3b90bd"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="5" dy="15" stdDeviation="18" flood-color="#031427" flood-opacity=".5"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <path d="M0 595L1200 350M0 655L1200 410M0 715L1200 470" stroke="#9cd0eb" stroke-opacity=".12" stroke-width="2"/>
+  <text x="72" y="116" font-family="Arial,Helvetica,sans-serif" font-size="30" letter-spacing="7" fill="#9ed9f0">STARWAY TECHNOLOGY</text>
+  <rect x="72" y="156" width="1056" height="5" fill="#54b5df"/>
+  <text x="72" y="292" font-family="Arial,Helvetica,sans-serif" font-size="86" font-weight="700" fill="white">MIL-W-16878</text>
+  <text x="76" y="367" font-family="Arial,Helvetica,sans-serif" font-size="36" letter-spacing="2" fill="#bde5f4">PTFE / FEP HOOKUP WIRE</text>
+  <g filter="url(#shadow)">
+    <ellipse cx="873" cy="531" rx="252" ry="170" fill="#d8f2fb" opacity=".15"/>
+    <circle cx="873" cy="505" r="180" fill="url(#jacket)" stroke="#d6f1fc" stroke-width="14"/>
+    <circle cx="873" cy="505" r="102" fill="url(#metal)" stroke="#fff0cd" stroke-width="11"/>
+    <circle cx="873" cy="505" r="45" fill="#f4c681" opacity=".55"/>
+    <circle cx="873" cy="505" r="157" fill="none" stroke="white" stroke-opacity=".32" stroke-width="4"/>
+  </g>
+  <path d="M732 648l-104 73H475" fill="none" stroke="#bde5f4" stroke-width="3"/>
+  <text x="76" y="695" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="white">CONSTRUCTION  •  AWG  •  COLOR CODE</text>
+  <text x="76" y="738" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#9ed9f0">250 V     /     600 V     /     1000 V</text>
+</svg>
